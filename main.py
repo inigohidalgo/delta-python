@@ -9,11 +9,17 @@ table_path = "data/delta/sample_dataset"
 
 df = pl.DataFrame(
     {"A":[1,2,3]}
-)
+).with_columns(pl.col("A").cast(pl.Float32))
 
 #%%
-df.write_delta(table_path)
+df.write_delta(table_path, mode="overwrite")
+#%%
+df
+#%%
 
+df.with_columns(
+    pl.col("A") * 1.5
+).write_delta(table_path, mode="append")
 
 #%%
 
