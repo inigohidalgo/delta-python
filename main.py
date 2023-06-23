@@ -18,10 +18,16 @@ df.write_delta(table_path)
 #%%
 
 dt = DeltaTable(table_path)
+dt.history()
+#%%
+
+dt.schema()
+
+#%%
 
 pyarrow_dataset = dt.to_pyarrow_dataset()
 sample_dataset = duckdb.arrow(pyarrow_dataset)
 
 # %%
 
-
+sample_dataset.filter("A > 1").to_df()
