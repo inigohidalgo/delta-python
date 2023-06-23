@@ -1,0 +1,4 @@
+deltalake
+polars
+duckdb
+pandas
