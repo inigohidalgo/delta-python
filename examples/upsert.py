@@ -28,5 +28,6 @@ dt = DeltaTable("tmp/test1")
         source_alias="source",
         target_alias="target")
     .when_matched_update_all()
+    .when_not_matched_insert_all()
     .execute()
 )
